@@ -75,7 +75,7 @@ public class PlayerServiceTest {
     @Test
     public void testGetPlayerById() {
         String playerId = "1";
-        Mockito.when(playerRepositoryCustom.findById(playerId)).thenReturn(player1);
+        Mockito.when(playerRepositoryCustom.findPlayerById(playerId)).thenReturn(player1);
         PlayerSummaryDTO result = playerService.getPlayerById(playerId);
         assertNotNull(result);
         assertEquals("1", result.getPlayerID());
@@ -85,7 +85,7 @@ public class PlayerServiceTest {
     @Test
     public void testGetPlayerByIdNotFound() {
         String playerId = "invalid";
-        Mockito.when(playerRepositoryCustom.findById(playerId)).thenReturn(null);
+        Mockito.when(playerRepositoryCustom.findPlayerById(playerId)).thenReturn(null);
         assertThrows(PlayerNotFoundException.class, () -> {
             playerService.getPlayerById(playerId);
         });

@@ -7,5 +7,5 @@ import java.util.List;
 public interface PlayerRepositoryCustom {
     List<PlayerSummaryDTO> findPlayerSummaries();
 
-    PlayerSummaryDTO findById(String playerID);
+    PlayerSummaryDTO findPlayerById(String playerID);
 }
