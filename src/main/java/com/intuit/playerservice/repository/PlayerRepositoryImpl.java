@@ -6,10 +6,12 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@Primary
 public class PlayerRepositoryImpl implements PlayerRepositoryCustom {
 
     @PersistenceContext
@@ -31,7 +33,7 @@ public class PlayerRepositoryImpl implements PlayerRepositoryCustom {
     }
 
     @Override
-    public PlayerSummaryDTO findById(String playerID) {
+    public PlayerSummaryDTO findPlayerById(String playerID) {
         try {
             String queryWithCondition = SELECT_ALL_COLUMNS + " WHERE p.\"playerID\" = :playerID";
             Query query = createNativeQuery(queryWithCondition);

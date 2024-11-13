@@ -30,7 +30,7 @@ public class PlayerService {
             throw new InvalidInputException(ResponseMessage.INVALID_PLAYER);
         }
 
-        PlayerSummaryDTO player = playerRepositoryCustom.findById(playerID);
+        PlayerSummaryDTO player = playerRepositoryCustom.findPlayerById(playerID);
         if (player == null) {
             throw new PlayerNotFoundException("Player ID " + playerID + ": " + ResponseMessage.PLAYER_NOT_FOUND);
         }
