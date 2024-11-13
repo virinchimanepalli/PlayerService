@@ -36,18 +36,14 @@ class PlayerControllerTest {
 
     @Test
     void testGetAllPlayers() {
-        // Arrange
         PlayerSummaryDTO player = new PlayerSummaryDTO();
         player.setPlayerID("1");
         player.setNameFirst("John");
         player.setNameLast("Doe");
 
         when(playerService.getAllPlayers()).thenReturn(List.of(player));
-
-        // Act
         ResponseEntity<Object> response = playerController.getAllPlayers();
 
-        // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
         PlayerResponse<List<PlayerSummaryDTO>> responseBody = (PlayerResponse<List<PlayerSummaryDTO>>) response.getBody();
         assert responseBody != null;
@@ -58,7 +54,6 @@ class PlayerControllerTest {
 
     @Test
     void testGetPlayerById() {
-        // Arrange
         String playerId = "1";
         PlayerSummaryDTO player = new PlayerSummaryDTO();
         player.setPlayerID(playerId);
@@ -66,11 +61,8 @@ class PlayerControllerTest {
         player.setNameLast("Doe");
 
         when(playerService.getPlayerById(playerId)).thenReturn(player);
-
-        // Act
         ResponseEntity<Object> response = playerController.getPlayerById(playerId);
 
-        // Assert
         assertEquals(HttpStatus.OK, response.getStatusCode());
         PlayerResponse<PlayerSummaryDTO> responseBody = (PlayerResponse<PlayerSummaryDTO>) response.getBody();
         assert responseBody != null;
